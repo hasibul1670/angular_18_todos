@@ -1,15 +1,47 @@
-<mat-card class="example-card" appearance="outlined">
-  <mat-card-header>
-    <mat-card-title>Chihuahua</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>{{longText}}</p>
-  </mat-card-content>
-  <mat-card-footer class="example-card-footer">
-    <mat-chip-set aria-label="Chihuahua traits">
-      <mat-chip>charming</mat-chip>
-      <mat-chip>graceful</mat-chip>
-      <mat-chip>sassy</mat-chip>
-    </mat-chip-set>
-  </mat-card-footer>
-</mat-card>
+<div
+  class="grid grid-cols-3 gap-3"
+  *ngIf="posts$ | async as posts; else loading"
+>
+  <div
+    (click)="openModal(post.id)"
+    *ngFor="let post of posts"
+    class="p-2 border-2 bg-teal-50 hover:cursor-pointer duration-300 hover:bg-teal-200 hover:scale-105 ease-out border-cyan-700 rounded-md"
+  >
+    <p class="text-base font-semibold text-red-900">{{ post.title }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="flex justify-center">
+    <div class="w-1/2">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Modal -->
+<div
+  *ngIf="isModalOpen"
+  class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out"
+>
+  <ng-container *ngIf="postDetails$ | async as postDetails">
+    <div
+      class="bg-white rounded-lg p-5 w-11/12 md:w-1/3 transform transition-transform duration-300 ease-in-out"
+      [ngClass]="{
+        'translate-y-4 opacity-0': !isModalOpen,
+        'translate-y-0 opacity-100': isModalOpen
+      }"
+    >
+      <h2 class="text-lg font-semibold text-red-900">
+        {{ postDetails?.title }}
+      </h2>
+      <p class="text-base text-gray-700">{{ postDetails?.body }}</p>
+      <button
+        class="mt-4 bg-red-500 text-white py-2 px-4 rounded"
+        (click)="closeModal()"
+      >
+        Close
+      </button>
+    </div>
+  </ng-container>
+</div>

@@ -1,1 +1,20 @@
-<p>product works!</p>
+<div
+  class="grid grid-cols-3 gap-3"
+  *ngIf="products$ | async as fetchedProducts; else loading"
+>
+  <!-- (click)="openModal(post.id)" -->
+  <div
+    *ngFor="let product of fetchedProducts"
+    class="p-2 border-2 bg-teal-50 hover:cursor-pointer duration-300 hover:bg-teal-200 hover:scale-105 ease-out border-cyan-700 rounded-md"
+  >
+    <p class="text-base font-semibold text-red-900">{{ product.name }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="flex justify-center">
+    <div class="w-1/2">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div>
+</ng-template>
