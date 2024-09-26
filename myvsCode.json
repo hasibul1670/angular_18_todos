@@ -1,0 +1,80 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.mouseWheelZoom": true,
+  "json.schemas": [],
+  "editor.fontSize": 22,
+  "editor.tabSize": 2,
+  "terminal.integrated.fontSize": 17,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+  "editor.wordWrap": "on",
+  "terminal.integrated.fontWeight": "600",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx"
+  },
+
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorBlinking": "expand",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.tslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "terminal.integrated.fontFamily": "monospace",
+  "workbench.iconTheme": "material-icon-theme",
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "autoimport.showNotifications": true,
+  "autoimport.doubleQuotes": true,
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "settingsSync.ignoredExtensions": [],
+  "editor.cursorWidth": 4,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript,typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.editor.enablePreview": false,
+  "git.openRepositoryInParentFolders": "never",
+  "security.workspace.trust.untrustedFiles": "open",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.codeLensFontSize": 20,
+  "css.lint.unknownAtRules": "ignore",
+  "workbench.editorAssociations": {
+    "*.bak": "default"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "http.proxyAuthorization": null,
+  "editor.formatOnSave": true,
+  "git.autofetch": true,
+  "debug.onTaskErrors": "debugAnyway",
+  "security.allowedUNCHosts": ["wsl.localhost"],
+  "workbench.settings.applyToAllProfiles": [],
+  "workbench.tree.indent": 15,
+  "workbench.tree.renderIndentGuides": "always",
+  "workbench.colorCustomizations": {
+    "tree.indentGuidesStroke": "#58ff05"
+  },
+  "code-runner.runInTerminal": true,
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.saveAllFilesBeforeRun": true,
+  "editor.indentSize": "tabSize",
+  "codeium.enableCodeLens": false
+}
