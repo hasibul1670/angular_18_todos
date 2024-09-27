@@ -1,40 +1,15 @@
-<div class="flex flex-col gap-2 py-5">
-  <ng-icon class="text-4xl mx-5" name="bootstrapArrowBarLeft"> </ng-icon>
-  <ng-icon class="text-4xl mx-5" name="bootstrapArrowBarRight"> </ng-icon>
-
-  <a href="/" class="flex justify-start hover:font-semibold hover:scale-105">
-    <ng-icon class="text-4xl mx-5" name="bootstrapBorderAll"> </ng-icon>
-  </a>
-
-  <a
-    href="/leaderboard"
-    class="flex justify-start hover:font-semibold hover:scale-105"
-  >
-    <ng-icon class="text-4xl mx-5" name=" bootstrapBarChartLine"> </ng-icon>
-  </a>
-  <a
-    href="/products"
-    class="flex justify-start hover:font-semibold hover:scale-105"
-  >
-    <ng-icon class="text-4xl mx-5" name="bootstrapCartPlus"> </ng-icon>
-  </a>
-  <a
-    href="/orders"
-    class="flex justify-start hover:font-semibold hover:scale-105"
-  >
-    <ng-icon class="text-4xl mx-5" name="bootstrapShopWindow"> </ng-icon>
-  </a>
-  <a
-    href="/notes"
-    class="flex justify-start hover:font-semibold hover:scale-105"
-  >
-    <ng-icon class="text-4xl mx-5" name="bootstrapPen"> </ng-icon>
-  </a>
-
-  <a
-    href="/user"
-    class="flex justify-start hover:font-semibold hover:scale-105"
-  >
-    <ng-icon class="text-4xl mx-5" name="heroUsers"> </ng-icon>
-  </a>
+<div class="flex flex-col gap-2 text-center py-10">
+  <ng-container *ngFor="let link of links">
+    <a
+      [routerLink]="link.route"
+      class="cursor-pointer py-4 w-full  hover:scale-125 duration-300"
+      [ngClass]="{ 'bg-primaryColor text-white': selectedLink === link.route }"
+      (click)="selectLink(link.route)"
+    >
+      <ng-icon class="text-[2.5rem] mx-5" [name]="link.icon"></ng-icon>
+    </a>
+  </ng-container>
 </div>
+
+<!-- <ng-icon class="text-4xl mx-5" name="bootstrapArrowBarLeft"> </ng-icon>
+  <ng-icon class="text-4xl mx-5" name="bootstrapArrowBarRight"> </ng-icon> -->

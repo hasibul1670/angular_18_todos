@@ -1,7 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 import {
   bootstrapArrowBarLeft,
   bootstrapArrowBarRight,
@@ -18,7 +20,14 @@ import { heroUsers } from '@ng-icons/heroicons/outline';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [MatButtonModule, NgIconComponent, MatDividerModule, MatIconModule],
+  imports: [
+    MatButtonModule,
+    RouterModule,
+    CommonModule,
+    NgIconComponent,
+    MatDividerModule,
+    MatIconModule,
+  ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
   viewProviders: [
@@ -35,4 +44,18 @@ import { heroUsers } from '@ng-icons/heroicons/outline';
     }),
   ],
 })
-export class SidebarComponent {}
+export class SidebarComponent {
+  selectedLink: string = '';
+  links = [
+    { route: '/', icon: 'bootstrapBorderAll' },
+    { route: '/leaderboard', icon: 'bootstrapBarChartLine' },
+    { route: '/products', icon: 'bootstrapCartPlus' },
+    { route: '/orders', icon: 'bootstrapShopWindow' },
+    { route: '/notes', icon: 'bootstrapPen' },
+    { route: '/user', icon: 'heroUsers' },
+  ];
+
+  selectLink(route: string) {
+    this.selectedLink = route;
+  }
+}

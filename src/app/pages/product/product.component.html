@@ -1,20 +1,136 @@
-<div
-  class="grid grid-cols-3 gap-3"
-  *ngIf="products$ | async as fetchedProducts; else loading"
->
-  <!-- (click)="openModal(post.id)" -->
-  <div
-    *ngFor="let product of fetchedProducts"
-    class="p-2 border-2 bg-teal-50 hover:cursor-pointer duration-300 hover:bg-teal-200 hover:scale-105 ease-out border-cyan-700 rounded-md"
+<div class="flex bg-cyan-100 py-5 items-center justify-between px-10">
+  <button
+    class="bg-primaryColor mr-5 text-white px-3 py-2 mt-2 rounded hover:bg-blue-900"
+    (click)="openModal()"
   >
-    <p class="text-base font-semibold text-red-900">{{ product.name }}</p>
+    Add Product
+  </button>
+
+  <div class="">
+    <p>Price Filter</p>
+    <mat-slider
+      min="0"
+      max="20000"
+      step="1000"
+      showTickMarks
+      discrete
+      [displayWith]="formatLabel"
+    >
+      <input matSliderThumb />
+    </mat-slider>
   </div>
+
+  <div>
+    <h4>Select Category</h4>
+    <mat-form-field>
+      <mat-label>Choose a Category</mat-label>
+      <mat-select>
+        @for (food of foods; track food) {
+        <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="flex mr-10">
+    <form class="example-form">
+      <input
+        type="text"
+        class="h-[8vh] w-[400px] border focus:outline-none border-gray-300 rounded-l-md px-6"
+        [(ngModel)]="searchText"
+        name="searchText"
+        placeholder="Search"
+      />
+    </form>
+  </div>
+</div>
+
+<div>
+  <app-product-form
+    [isOpen]="isModalOpen"
+    (close)="closeModal()"
+    (addProduct)="addProduct($event)"
+  ></app-product-form>
+</div>
+<div>
+  <app-product-edit-form
+    [isOpen]="isEditProductModal"
+    [productToEdit]="singleProducts"
+    (close)="closeEditModal()"
+    (editProduct)="editProduct($event)"
+  ></app-product-edit-form>
+</div>
+<div
+  *ngIf="products$ | async as fetchedProducts; else loading"
+  class="overflow-x-auto bg-cyan-50"
+>
+  <table class="min-w-full border border-gray-400">
+    <thead class="bg-gray-200">
+      <tr>
+        <th class="py-2 px-4 border-b text-left text-gray-700">ID</th>
+        <th class="py-2 px-4 border-b text-left text-gray-700">Name</th>
+        <th class="py-2 px-4 border-b text-left text-gray-700">Description</th>
+        <th class="py-2 px-4 border-b text-left text-gray-700">Price</th>
+        <th class="py-2 px-4 border-b text-left text-gray-700">Quantity</th>
+        <th class="py-2 px-4 border-b text-left text-gray-700">Stock</th>
+        <th class="py-2 px-4 border-b text-left text-gray-700">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of fetchedProducts" class="hover:bg-gray-50">
+        <td class="py-2 px-4 border-b text-gray-800">{{ product.id }}</td>
+        <td class="py-2 px-4 border-b text-gray-800">{{ product.name }}</td>
+        <td class="py-2 px-4 border-b text-gray-800">
+          {{ product.description }}
+        </td>
+        <td class="py-2 px-4 border-b text-gray-800">${{ product.price }}</td>
+        <td class="py-2 px-4 border-b text-gray-800">{{ product.quantity }}</td>
+        <td class="py-2 px-4 border-b text-gray-800">{{ product.inStock }}</td>
+        <td class="mt-5 px-4 border-b text-gray-800 flex">
+          <button
+            class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+            (click)="editProductModal(product)"
+          >
+            Edit
+          </button>
+          <button
+            class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 ml-2"
+            (click)="deletePopup(product.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <ng-template #loading>
   <div class="flex justify-center">
-    <div class="w-1/2">
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </div>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
   </div>
 </ng-template>
+
+<div
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70"
+  *ngIf="isDeletePopupOpen"
+>
+  <div class="bg-white p-6 rounded shadow-lg">
+    <h2 class="text-lg font-bold mb-4">Confirm Delete</h2>
+    <p class="mb-4">Are you sure you want to delete this item?</p>
+    <div class="flex justify-end">
+      <button
+        class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2"
+        (click)="closeDeletePopup()"
+      >
+        Cancel
+      </button>
+      <button
+        class="bg-red-600 text-white px-4 py-2 rounded"
+        (click)="deleteProduct()"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

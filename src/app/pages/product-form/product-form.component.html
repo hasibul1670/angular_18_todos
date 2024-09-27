@@ -1,0 +1,68 @@
+<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div class="bg-white rounded p-4 shadow-lg w-1/3">
+    <h2 class="text-lg font-semibold">Add Product</h2>
+    
+    <div class="mt-2">
+      <label class="block text-sm">Product Name:</label>
+      <input
+        type="text"
+        [(ngModel)]="productName"
+        class="border rounded px-2 py-1 w-full"
+      />
+    </div>
+    
+    <div class="mt-2">
+      <label class="block text-sm">Product Price:</label>
+      <input
+        type="number"
+        [(ngModel)]="productPrice"
+        class="border rounded px-2 py-1 w-full"
+      />
+    </div>
+
+    <div class="mt-2">
+      <label class="block text-sm">Product Description:</label>
+      <textarea
+        [(ngModel)]="productDescription"
+        class="border rounded px-2 py-1 w-full"
+        rows="3"
+      ></textarea>
+    </div>
+    
+    <div class="mt-2">
+      <label class="block text-sm">In Stock:</label>
+      <input
+        type="checkbox"
+        [(ngModel)]="inStock"
+        class="mr-2"
+      /> In Stock
+    </div>
+    
+    <div class="mt-2">
+      <label class="block text-sm">Quantity:</label>
+      <input
+        type="number"
+        [(ngModel)]="productQuantity"
+        class="border rounded px-2 py-1 w-full"
+        min="1"
+      />
+    </div>
+
+    <div class="mt-4 flex justify-end">
+      <button
+        class="bg-gray-300 px-4 py-2 rounded mr-2"
+        (click)="close.emit()"
+      >
+        Cancel
+      </button>
+      <button
+        class="bg-primaryColor text-white px-4 py-2 rounded"
+        (click)="onAddProduct()"
+      >
+        Add Product
+      </button>
+    </div>
+  </div>
+</div>
+
+
