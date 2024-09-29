@@ -21,8 +21,10 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
-              }
+                "input": "src/app/asset",
+                "output": "asset"
+              },
+              "src/app/asset"
             ],
             "styles": ["src/custom-theme.scss", "src/styles.css"],
             "scripts": []

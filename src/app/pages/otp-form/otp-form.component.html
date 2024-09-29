@@ -1,0 +1,45 @@
+<div class="h-[99vh] bg-loginBgColor flex justify-center font-gotham">
+  <div class="max-w-screen-xl flex justify-center">
+    <div class="w-1/2 flex flex-col items-center justify-center">
+      <img
+        src="../../asset/login/otpbgImage.png"
+        alt="Description of Image"
+        class="max-w-full h-auto"
+      />
+      <div class="text-[40px] text-primaryColor flex flex-col items-center">
+        <p class="font-bold">Administration</p>
+        <p class="font-normal">Portal</p>
+      </div>
+    </div>
+
+    <section class="py-[12rem] px-20 w-1/2">
+      <div class="bg-white h-[60vh] px-5 shadow-lg rounded-lg py-8">
+        <p class="text-xl font-semibold">Login</p>
+        <p class="text-base mt-5">Please enter the OTP</p>
+
+        <div class="otp-container mt-10">
+          <input
+            *ngFor="let digit of otpDigits; let i = index"
+            type="text"
+            maxlength="1"
+            class="otp-input"
+            [(ngModel)]="otp[i]"
+            (input)="onInput($event, i)"
+            (focus)="focusInput(i)"
+            (keydown)="onKeyDown($event, i)"
+          />
+        </div>
+
+        <div class="flex justify-center mt-20">
+          <button
+            class="text-base px-6 py-4 rounded-md text-white font-semibold bg-primaryColor"
+          >
+            <a href="/verify-otp"> Verify OTP </a>
+          </button>
+        </div>
+
+        <p class="text-center mt-[5rem] uppercase font-semibold">Holcim</p>
+      </div>
+    </section>
+  </div>
+</div>

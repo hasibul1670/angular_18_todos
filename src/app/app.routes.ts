@@ -6,6 +6,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NotesComponent } from './pages/notes/notes.component';
 import { OrderComponent } from './pages/order/order.component';
+import { OtpFormComponent } from './pages/otp-form/otp-form.component';
+import { OtpLoginComponent } from './pages/otp-login/otp-login.component';
 import { ProductComponent } from './pages/product/product.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { UserComponent } from './pages/user/user.component';
@@ -19,6 +21,14 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'otp-login',
+    component: OtpLoginComponent,
+  },
+  {
+    path: 'verify-otp',
+    component: OtpFormComponent,
   },
   {
     path: 'signup',

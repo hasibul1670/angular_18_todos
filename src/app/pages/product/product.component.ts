@@ -54,19 +54,13 @@ export class ProductComponent {
   isModalOpen = false;
   isEditProductModal = false;
   isDeletePopupOpen = false;
-  foods: any[] = [
-    { value: 'phone', viewValue: 'Phone' },
-    { value: 'accessories', viewValue: 'Accessories' },
-    { value: 'laptop', viewValue: 'Laptop' },
-    { value: 'tablet', viewValue: 'Tablet' },
-    { value: 'watch', viewValue: 'Watch' },
-  ];
 
+  filterAmount: number | null = null;
   formatLabel(value: number): string {
+    this.filterAmount = value;
     if (value >= 20000) {
       return Math.round(value / 1000) + 'k';
     }
-
     return `${value}`;
   }
 
@@ -114,6 +108,7 @@ export class ProductComponent {
     this.isDeletePopupOpen = true;
   }
 
+  
   deleteProduct() {
     this.productService
       .deleteProduct(this.id!)

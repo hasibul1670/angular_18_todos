@@ -1,0 +1,48 @@
+<div class="h-[99vh] bg-loginBgColor flex justify-center font-gotham">
+  <div class="max-w-screen-xl flex justify-center">
+    <div class="w-1/2 flex flex-col items-center justify-center">
+      <img
+        src="../../asset/login/otpbgImage.png"
+        alt="Description of Image"
+        class=" h-auto"
+      />
+      <div class="text-[40px] text-primaryColor flex flex-col items-center">
+        <p class="font-bold">Administration</p>
+        <p class="font-normal">Portal</p>
+      </div>
+    </div>
+
+    <section class="py-[12rem] px-20 w-1/2">
+      <div class="bg-white h-[60vh] px-5 shadow-lg rounded-lg py-8">
+        <p class="text-xl font-semibold">Login</p>
+        <p class="text-base mt-5">Please enter the registered email id.</p>
+        <app-input-field
+          type="text"
+          title="Enter Email ID"
+          placeholder="username@emailid.com"
+          [required]="true"
+          [disabled]="false"
+          name="yourInputName"
+          [(ngModel)]="inputValue"
+          (change)="handleInputChange($event)"
+        ></app-input-field>
+
+        <div class="flex justify-center mt-20">
+          <button
+            class="text-base px-6 py-4 rounded-md text-white font-semibold bg-primaryColor"
+          >
+            <a href="/verify-otp"> Get OTP </a>
+          </button>
+        </div>
+
+        <div class="register flex mt-5 justify-center">
+          <p class="underline">
+            Don't have an account?
+            <a class="font-semibold" href="#">Create an account</a>
+          </p>
+        </div>
+        <p class="text-center mt-[5rem] uppercase font-semibold">Holcim</p>
+      </div>
+    </section>
+  </div>
+</div>

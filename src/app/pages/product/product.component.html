@@ -20,17 +20,7 @@
     </mat-slider>
   </div>
 
-  <div>
-    <h4>Select Category</h4>
-    <mat-form-field>
-      <mat-label>Choose a Category</mat-label>
-      <mat-select>
-        @for (food of foods; track food) {
-        <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-  </div>
+  
 
   <div class="flex mr-10">
     <form class="example-form">

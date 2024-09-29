@@ -4,7 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primaryColor: "#007382", // Add your custom color with a name (e.g., customGreen)
+        primaryColor: "#007382",
+        loginBgColor: "#F8F8F8", 
+      },
+      fontFamily: {
+        gotham: ["Gotham", "sans-serif"], 
       },
     },
   },

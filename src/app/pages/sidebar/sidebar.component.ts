@@ -52,7 +52,7 @@ export class SidebarComponent {
     { route: '/products', icon: 'bootstrapCartPlus' },
     { route: '/orders', icon: 'bootstrapShopWindow' },
     { route: '/notes', icon: 'bootstrapPen' },
-    { route: '/user', icon: 'heroUsers' },
+    { route: '/login', icon: 'heroUsers' },
   ];
 
   selectLink(route: string) {

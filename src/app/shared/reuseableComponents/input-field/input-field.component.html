@@ -1,0 +1,25 @@
+<div class="form-input">
+  <div class="input-container">
+    <input
+      [name]="name"
+      [disabled]="disabled"
+      [type]="type"
+      [required]="required"
+      (focus)="handleFocus()"
+      (blur)="handleBlur()"
+      (input)="onInputChange($event)"
+      class="input-field"
+      placeholder=" " 
+    />
+    <label
+      [attr.for]="name"
+      class="input-label"
+      [ngClass]="{
+        'text-primaryColor font-bold': isFocused,
+        'text-gray-700': !isFocused
+      }"
+    >
+      {{ title }}
+    </label>
+  </div>
+</div>
