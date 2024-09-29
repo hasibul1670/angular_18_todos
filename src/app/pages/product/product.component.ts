@@ -103,12 +103,6 @@ export class ProductComponent {
       });
   }
 
-  deletePopup(id: any) {
-    this.id = id;
-    this.isDeletePopupOpen = true;
-  }
-
-  
   deleteProduct() {
     this.productService
       .deleteProduct(this.id!)
@@ -116,15 +110,15 @@ export class ProductComponent {
         const index = this.products.findIndex((p) => p.id === this.id);
         if (index !== -1) {
           this.products.splice(index, 1);
+          this.products$.next([...this.products]); 
         }
-        // Update the observable with the new products array
-        this.products$.next([...this.products]);
         this.notificationService.showSuccess('Product deleted successfully!');
-        this.isDeletePopupOpen = false;
       })
       .catch((err) => {
         this.notificationService.showError('Failed to delete product.');
         console.error('Error deleting product:', err);
+      })
+      .finally(() => {
         this.isDeletePopupOpen = false;
       });
   }
@@ -149,6 +143,11 @@ export class ProductComponent {
         this.notificationService.showError('Failed to add product.');
         console.error('Error adding product:', err);
       });
+  }
+
+  deletePopup(id: any) {
+    this.id = id;
+    this.isDeletePopupOpen = true;
   }
 
   openModal() {

@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { v4 as uuidv4 } from 'uuid';
-import { toast, NgxSonnerToaster } from 'ngx-sonner';
+
 @Component({
   selector: 'app-product-form',
   standalone: true,
